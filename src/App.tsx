@@ -1,11 +1,11 @@
 import './App.css'
-import HW1 from '../s2-homeworks/hw01/HW1'
+import HW2 from '../s2-homeworks/hw01/HW1'
 
 function App() {
 
   return (
     <div>
-      <HW1 />
+      <HW2 />
     </div>
   )
 }
