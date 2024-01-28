@@ -1,4 +1,3 @@
-import React from 'react'
 import Message from './message/Message'
 import MessageSender from './message-sender/MessageSender'
 import FriendMessage from './friend-message/FriendMessage'
