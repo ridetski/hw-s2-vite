@@ -1,5 +1,5 @@
 import './App.css'
-import HW2 from '../s2-homeworks/hw02/HW2'
+import HW3 from '../s2-homeworks/hw03/HW3'
 
 function App() {
 
