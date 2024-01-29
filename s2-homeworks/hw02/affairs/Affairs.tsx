@@ -4,8 +4,8 @@ import s from './Affairs.module.css'
 
 type AffairsPropsType = {
     data: AffairType[] // need to fix any
-    setFilter: React.Dispatch<React.SetStateAction<string>>
-    deleteAffairCallback: (_id: number) => AffairType[]
+    setFilter: React.Dispatch<React.SetStateAction<FilterType>>
+    deleteAffairCallback: (_id: number) => void
     filter: FilterType
 }
 
@@ -17,61 +17,37 @@ function Affairs(props: AffairsPropsType) {
     const cnLow = s.button + ' ' + s.low + (props.filter === 'low' ? ' ' + s.active : '')
 
     const setAll = () => {
-        // need to fix
+        props.setFilter('all')
     }
     const setHigh = () => {
-        // need to fix
+        props.setFilter('high')
     }
     const setMiddle = () => {
-        // need to fix
+        props.setFilter('middle')
     }
     const setLow = () => {
-        // need to fix
+        props.setFilter('low')
     }
-
-
-
-    const mappedAffairs = props.data.map((a: AffairType) => (
-        <Affair
-            key={a._id} // кеи ОБЯЗАТЕЛЬНЫ в 99% - так что лучше их писать всегда при создании компонент в мапе
-            affair={a}
-            deleteAffairCallback={props.deleteAffairCallback}
-        />
-    ))
 
     return (
         <div>
             <div className={s.buttonContainer}>
-                <button
-                    id={'hw2-button-all'}
-                    onClick={setAll}
-                    className={cnAll}
-                >
-                    All
-                </button>
-                <button
-                    id={'hw2-button-high'}
-                    onClick={setHigh}
-                    className={cnHigh}
-                >
-                    High
-                </button>
-                <button
-                    id={'hw2-button-middle'}
-                    onClick={setMiddle}
-                    className={cnMiddle}
-                >
-                    Middle
-                </button>
-                <button
-                    id={'hw2-button-low'}
-                    onClick={setLow}
-                    className={cnLow}
-                >
-                    Low
-                </button>
+                <button id={'hw2-button-all'} onClick={setAll} className={cnAll}>All</button>
+                <button id={'hw2-button-high'} onClick={setHigh} className={cnHigh}>High</button>
+                <button id={'hw2-button-middle'} onClick={setMiddle} className={cnMiddle}>Middle</button>
+                <button id={'hw2-button-low'} onClick={setLow} className={cnLow}>Low</button>
             </div>
-            <div className={s.affairs}>{mappedAffairs}</div>
+            <div className={s.affairs}>
+                {
+                    props.data.map((a: AffairType) => (
+                        <Affair
+                            key={a._id} // кеи ОБЯЗАТЕЛЬНЫ в 99% - так что лучше их писать всегда при создании компонент в мапе
+                            affair={a}
+                            deleteAffairCallback={props.deleteAffairCallback}
+                        />
+                    ))
+                }
+            </div>
         </div>
     )
 }

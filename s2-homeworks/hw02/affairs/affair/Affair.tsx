@@ -13,19 +13,12 @@ function Affair(props: AffairPropsType) {
     const buttonClass = s.closeButton + ' ' + s2[props.affair.priority]
     const affairClass = s.affair + ' ' + s2[props.affair.priority]
 
-    const deleteCallback = () => {
-        // need to fix
-    }
+    const deleteCallback = (_id: number) => props.deleteAffairCallback(_id)
 
     return (
-        <div
-            id={'hw2-affair-' + props.affair._id}
-            className={affairClass}
-        >
+        <div id={'hw2-affair-' + props.affair._id} className={affairClass}>
             <div id={'hw2-name-' + props.affair._id} className={nameClass}>
-                {/*создаёт студент*/}
-
-                {/**/}
+                {props.affair.name}
             </div>
             <div id={'hw2-priority-' + props.affair._id} hidden>
                 {props.affair.priority}
@@ -34,13 +27,8 @@ function Affair(props: AffairPropsType) {
             <button
                 id={'hw2-button-delete-' + props.affair._id}
                 className={buttonClass}
-            // need to fix
-
-            >
-                {/*текст кнопки могут изменить студенты*/}
-                X
-                {/**/}
-            </button>
+                onClick={() => deleteCallback(props.affair._id)}
+            >X</button>
         </div>
     )
 }
