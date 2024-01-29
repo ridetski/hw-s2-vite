@@ -18,7 +18,7 @@ export const pureAddUserCallback = (name: string, setUsers: React.Dispatch<React
 const HW3 = () => {
     const [users, setUsers] = useState<UserType[]>([]) // need to fix any
 
-    const addUserCallback = { // need to fix any
+    const addUserCallback = (name: string) => { // need to fix any
         pureAddUserCallback(name, setUsers, users)
     }
 
